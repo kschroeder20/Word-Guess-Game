@@ -1,0 +1,65 @@
+//GLOBAL VARIABLES
+//===========================================================
+//list of rappers
+var rappers = ['eminem', 'kanye west', 'run the jewles', 'big sean', 'drake'];
+
+//chose a random word
+var ranNum = Math.floor(Math.random() * rappers.length);
+var chosenRapper = rappers[ranNum];
+var rightWord = [];
+var wrongWord = [];
+var underScore = [];
+
+//testing
+console.log(chosenRapper);
+console.log(chosenRapper.length);
+
+//DOM manipulation
+//var docUnderScore = document.getElementById('blankSpaces');
+
+
+//MAIN
+//===========================================================
+
+//create underscores based on length of word
+var generateUnderScore = () => {
+    for (var i = 0; i < chosenRapper.length; i++) {
+        underScore.push(' _ ');
+    }
+    return underScore;
+    
+}
+
+document.getElementById("blankSpaces").innerHTML = generateUnderScore().join('');
+
+
+
+
+//get users guess
+document.addEventListener('keypress', function userGuess(event) {
+    var keycode = event.keyCode;
+    var keyword = String.fromCharCode(keycode);
+    //if user guess is right
+    if (chosenRapper.indexOf(keyword) > -1) {
+        //add to the right words array
+        rightWord.push(keyword);
+        console.log(rightWord);
+        //replace underscore with right letter
+        underScore[chosenRapper.indexOf(keyword)] = keyword;
+    }
+});
+        //if (underScore.join('') == chosenRapper) {
+       //     alert("You Win!");
+      //  }
+     //   console.log(underScore);
+    //} else {
+      //  wrongWord.push(keyword);
+      //  console.log(wrongWord);
+    //}
+//});
+//generateUnderScore().join(' ');
+//docUnderScore[0].innerHTML = 'Working'
+
+
+
+

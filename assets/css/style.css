@@ -1,0 +1,87 @@
+/*!
+ * Start Bootstrap - Grayscale v5.0.5 (https://startbootstrap.com/template-overviews/grayscale)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
+ */
+
+body{
+    width:100%;
+    height: 100%;
+}
+ .masthead {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  background: black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.masthead h1 {
+  font-family: 'Varela Round';
+  font-size: 1rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.8rem;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.masthead h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+    color: white;
+    text-shadow: 2px 2px black;
+  }
+  .masthead h3 {
+  font-family: 'Varela Round';
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+@media (min-width: 768px) {
+  .masthead h1 {
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    height: 100vh;
+    padding: 0px;
+  }
+  .masthead h1 {
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 0.8rem;
+    transform: translateY(-200px);
+  }
+  .masthead h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+    transform: translateY(-180px);
+    color: white;
+    text-shadow: 2px 2px black;
+  }
+}
+
+
+body {
+  font-family: 'Nunito';
+  letter-spacing: 0.0625em;
+}
+
+.bg-black {
+  background-color: #161616 !important;
+}
+
+.bg-primary {
+  background-color: #64a19d !important;
+}
+
+
