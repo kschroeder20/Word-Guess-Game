@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hangman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../Word-Guess-Game/assets/css/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../Word-Guess-Game/assets/css/style.css">
     
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link
@@ -18,24 +18,16 @@
 
 
 <body id="page-top">
-    <header class="masthead">
-        <div class="container d-flex h-100 align-items-center fixed-bottom">
-            <div class="mx-auto text-center fixed-bottom">
                 <h1 class="mx-auto my-0 text-uppercase">Greatest Rappers Alive</h1>
                 <h2 class="text-white-50 mx-auto mt-2 mb-5">Press any Key to Start</h2>
-                    <h3>Rapper Name: <span id="under-scores"></span></h3>
-                    <h3>Wrong Guesses: <span id="wrong-letters"></span></h3>
+                    <h3>Rapper Name: <span id="placeholders"></span></h3>
+                    <h3>Wrong Guesses: <span id="guessed-letters"></span></h3>
                     <h3>Guesses Left: <span id="guesses-left"></span></h3>
-                    <h3>Win Count: <span id="win-count"></span></h3>
-                    <h3>Lose Count: <span id="lose-count"></span></h3>
-                    <button id="new-game" onclick="gameStart()">Reset</button>
-            </div>
-        </div>
-    </header>
-    <div id="under-scores"></div>
-    <div id="wrong-letters"></div>
+                    <h3>Win Count: <span id="wins"></span></h3>
+                    <h3>Lose Count: <span id="losses"></span></h3>
+                    <button id="new-game-button" onclick="newGame()">New Game</button>
 
    
 </body>
-<script src="../Word-Guess-Game/assets/javascript/game.js"></script>
+<script src="../Word-Guess-Game/assets/javascript/game.1.js"></script>
 </html>

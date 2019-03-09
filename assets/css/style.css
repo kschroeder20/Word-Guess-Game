@@ -32,15 +32,14 @@ body{
 .masthead h2 {
     max-width: 30rem;
     font-size: 1.25rem;
-    color: white;
+    color: black;
     text-shadow: 2px 2px black;
   }
-  .masthead h3 {
+  h3 {
   font-family: 'Varela Round';
   font-size: 2rem;
   line-height: 2.5rem;
-  color: white;
-  text-shadow: 2px 2px black;
+  color: black;
 }
 
 @media (min-width: 768px) {
