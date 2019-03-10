@@ -1,86 +1,82 @@
-/*!
- * Start Bootstrap - Grayscale v5.0.5 (https://startbootstrap.com/template-overviews/grayscale)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
- */
-
-body{
-    width:100%;
-    height: 100%;
-}
- .masthead {
-  position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 35rem;
+body, html, .container-fluid {
+  height: 100%;
   background: black;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
-
-.masthead h1 {
-  font-family: 'Varela Round';
-  font-size: 1rem;
-  line-height: 2.5rem;
-  letter-spacing: 0.8rem;
   color: white;
-  text-shadow: 2px 2px black;
+  font-family: 'Open Sans', sans-serif;
+}
+.mic{
+  height: 10%;
+  background: black;
+  text-align: center;
+}
+.mic img{
+  height: 50%;
+  transform: translateX(50%)
 }
 
-.masthead h2 {
-    max-width: 30rem;
-    font-size: 1.25rem;
-    color: black;
-    text-shadow: 2px 2px black;
-  }
-  h3 {
-  font-family: 'Varela Round';
-  font-size: 2rem;
-  line-height: 2.5rem;
-  color: black;
+h1{
+  font-size: 70px;
+  font-weight: bolder;
 }
 
-@media (min-width: 768px) {
-  .masthead h1 {
-    font-size: 2rem;
-    line-height: 4rem;
-  }
+.hero {
+  height: 60%;
+  background-color: black;
+  
+}
+#hero-text{
+margin-top: 20%;
+color: white;
+text-align: center;
 }
 
-@media (min-width: 992px) {
-  .masthead {
-    height: 100vh;
-    padding: 0px;
-  }
-  .masthead h1 {
-    font-size: 2rem;
-    line-height: 2rem;
-    letter-spacing: 0.8rem;
-    transform: translateY(-200px);
-  }
-  .masthead h2 {
-    max-width: 30rem;
-    font-size: 1.25rem;
-    transform: translateY(-180px);
-    color: white;
-    text-shadow: 2px 2px black;
-  }
+/*(.game-progress {
+  border: 5px solid white;
+}*/
+#stats,
+#game-status{
+text-align: center;
+
+}
+.user-input{
+  letter-spacing: 10px;
 }
 
 
-body {
-  font-family: 'Nunito';
-  letter-spacing: 0.0625em;
+
+/* Swing Animation */
+.swing {
+    animation: swing ease-in-out 1s infinite alternate;
+    transform-origin: center -20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
-
-.bg-black {
-  background-color: #161616 !important;
+.swing img {
+    border: 5px solid #f8f8f8;
+    display: block;
 }
-
-.bg-primary {
-  background-color: #64a19d !important;
+.swing:after{
+    content: '';
+    position: absolute;  
+    width: 20px; height: 20px;  
+    border: 1px solid #999;
+    top: -10px; left: 50%;
+    z-index: 0;
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
 }
-
-
+/* nail */
+.swing:before{
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    top: -14px;left: 54%;
+    z-index: 5;
+    border-radius: 50% 50%;
+    background: #000;
+}
+ 
+@keyframes swing {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}

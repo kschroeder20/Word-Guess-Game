@@ -6,36 +6,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hangman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../Word-Guess-Game/assets/css/style.css">
-    
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <audio id="logic">
+        <source src="../Word-Guess-Game/assets/songs/Logic - Keanu Reeves (Official Audio).mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="big-sean">
+        <source src="../Word-Guess-Game/assets/songs/Big Sean - No More Interviews.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="drake">
+        <source src="../Word-Guess-Game/assets/songs/Drake - Underground Kings HQ.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="eminem">
+        <source src="../Word-Guess-Game/assets/songs/Forever Eminem Verse Only and lyrics.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="hopsin">
+        <source src="../Word-Guess-Game/assets/songs/Hopsin - ILL MIND OF HOPSIN 5.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="kanye-west">
+        <source src="../Word-Guess-Game/assets/songs/POWER.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="rtj">
+        <source src="../Word-Guess-Game/assets/songs/Run The Jewels - Legend Has It  From The RTJ3 Album.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 </head>
 
 
-<body id="page-top">
-    <header class="masthead">
-        <div class="container d-flex h-100 align-items-center fixed-bottom">
-            <div class="mx-auto text-center fixed-bottom">
-                <h1 class="mx-auto my-0 text-uppercase">Greatest Rappers Alive</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Press any Key to Start</h2>
-                    <h3>Rapper Name: <span id="under-scores"></span></h3>
-                    <h3>Wrong Guesses: <span id="wrong-letters"></span></h3>
-                    <h3>Guesses Left: <span id="guesses-left"></span></h3>
-                    <h3>Win Count: <span id="win-count"></span></h3>
-                    <h3>Lose Count: <span id="lose-count"></span></h3>
-                    <button id="new-game" onclick="gameStart()">Reset</button>
+<body>
+    <div class="container-fluid">
+        <div class="row mic">
+            <div class="col-sm-12 col-lg-12">
+                <img src="./assets/images/mic-mic-mic-hi.png" class="swing">
             </div>
         </div>
-    </header>
-    <div id="under-scores"></div>
-    <div id="wrong-letters"></div>
-
-   
+        <div class="row hero">
+            <div class="col-sm-12 col-lg-12">
+                <div class="col-lg-12" id="hero-text">
+                    <h1>Greatest Rappers Alive</h1>
+                    <h4>Press any Key to Start</h4>
+                    <button id="new-game-button" onclick="newGame()">New Game</button>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="game-progress">
+        <div class="row" id = "game-status">
+            <div class="col-sm-offset-1 col-sm-5">
+                <h3>Rapper Name: <br><span class="user-input" id="placeholders"></span></h3>
+            </div>
+            <div class="col-sm-5">
+                <h3>Wrong Guesses: <br><span class="user-input" id="guessed-letters"></span></h3>
+            </div>
+        </div>
+        <br><br>
+        <div class="row" id = "stats">
+            <div class="col-sm-4">
+                <h3>Guesses Left: <span id="guesses-left"></span></h3>
+            </div>
+            <div class="col-sm-4">
+                <h3>Win Count: <span id="wins"></span></h3>
+            </div>
+            <div class="col-sm-4">
+                <h3>Lose Count: <span id="losses"></span></h3>
+            </div>
+        </div>
+        </div>
 </body>
 <script src="../Word-Guess-Game/assets/javascript/game.js"></script>
+
 </html>

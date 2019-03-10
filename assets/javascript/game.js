@@ -1,62 +1,202 @@
-//GLOBAL VARIABLES
-//===========================================================
-//list of rappers
-var rappers = ['eminem', 'kanye west', 'run the jewles', 'big sean', 'drake'];
-var loseCount = 0;
-var winCount = 0;
-var gameRunning = false;
-var underScores = [];
-var wrongLetters = [];
-var guessesLeft = 10;
+//DOM Elements
+var $newGameButton = document.getElementById("new-game-button");
+var $placeholders = document.getElementById("placeholders");
+var $guessedLetters = document.getElementById("guessed-letters");
+var $guessesLeft = document.getElementById("guesses-left");
+var $wins = document.getElementById("wins");
+var $losses = document.getElementById("losses");
 
-//chose a random word
-function gameStart() {
-    var ranNum = Math.floor(Math.random() * rappers.length);
-    chosenRapper = rappers[ranNum];
-    rapperLetters = chosenRapper.split("");
-    underScores = [];
-    wrongLetters = [];
+
+//Variables
+var wordbank = ['eminem', 'kanye west', 'run the jewles', 'big sean', 'drake', 'logic', 'hopsin'];
+var wins = 0;
+var losses = 0;
+var guessesLeft = 0;
+var gameRunning = false;
+var pickedWord = '';
+var pickedWordPlaceholderArr = [];
+var guessedLetterBank = [];
+var incorrectLetterBank = [];
+var logic = document.getElementById("logic");
+var bigsean = document.getElementById("big-sean");
+var drake = document.getElementById("drake");
+var eminem = document.getElementById("eminem");
+var hopsin = document.getElementById("hopsin");
+var kanye = document.getElementById("kanye-west");
+var rtj = document.getElementById("rtj");
+
+//NewGame starts game, resets the stats, and displays a new word
+function newGame() {
+    var ranNum = Math.floor(Math.random() * wordbank.length);
     gameRunning = true;
     guessesLeft = 10;
+    pickedWordPlaceholderArr = [];
+    guessedLetterBank = [];
+    incorrectLetterBank = [];
 
-    //testing
-    console.log(chosenRapper);
-    console.log(rapperLetters);
-    console.log(chosenRapper.length);
+    //New word
+    pickedWord = wordbank[ranNum];
+    console.log(pickedWord);
+    pickedLetters = pickedWord.split("");
+    
 
-    //generate underscores
-    for (var i = 0; i < rapperLetters.length; i++) {
-        if (rapperLetters[i] === " ") {
-            underScores.push(' ');
+    //Generate underscores
+    for (var i = 0; i < pickedLetters.length; i++) {
+        if (pickedLetters[i] === " ") {
+            pickedWordPlaceholderArr.push(' ');
         } else {
-            underScores.push('_');
+            pickedWordPlaceholderArr.push('_');
         }
-        document.getElementById("under-scores").innerHTML = underScores.join("");
+
+        //Write all new game info to DOM
+        $guessesLeft.textContent = guessesLeft;
+        $placeholders.textContent = pickedWordPlaceholderArr.join('');
+        $guessedLetters.textContent = incorrectLetterBank;
     }
-    //capture user input
-    document.onkeyup = function (e) {
-        for (var i = 0; i < rapperLetters.length; i++) {
-            //if the user input is in the rapper's name
-            if (e.key === rapperLetters[i]) {
-                underScores[i] = e.key;
-                document.getElementById("under-scores").innerHTML = underScores.join("");
-                //if the user input is not on the rapper's name
-            } else if (rapperLetters.indexOf(e.key) === -1) {
-                //if the wrong guess hasn't already been guessed
-                if (wrongLetters.indexOf(e.key) === -1) {
-                    wrongLetters.push(e.key);
-                    //write in wrong guesses section
-                    document.getElementById("wrong-letters").innerHTML = wrongLetters.join(" ");
-                    guessesLeft--;
-                    document.getElementById("guesses-left").innerHTML = guessesLeft;
+
+    //Do something with the letter pressed
+    function letterGuess(letter) {
+        //Check if letter pressed is correct
+        if (gameRunning === true && guessedLetterBank.indexOf(letter) === -1) {
+            guessedLetterBank.push(letter);
+            //If the letter is correct, loop through each letter to find the right underscore to replace
+            for (var i = 0; i < pickedWord.length; i++) {
+                //If the letter pressed is contained somewhere in the picked word
+                //Convert guess to lowercase for checking purposess, then return uppercase
+                if (letter.toLowerCase() === pickedWord[i].toLowerCase()) {
+                    pickedWordPlaceholderArr[i] = pickedWord[i].toUpperCase();
                 }
             }
+            //Push correct letter do DOM
+            $placeholders.textContent = pickedWordPlaceholderArr.join('');
+            //Jump to incorrect letter seciton
+            checkIncorrect(letter);
+        } else {
+            if (!gameRunning) {
+                alert("No Game");
+            } else {
+                alert("You've Already Guessed this Key, Try Again!");
             }
-        if (guessesLeft <= 0) {
-            alert("You Lost :(. Press Reset to Try Again!");
-            loseCount++;
-            document.getElementById("lose-count").innerHTML = loseCount;
-            gameRunning = false;
-        }   
+        }
+
     }
+
+    //Check if letter is not in the word
+    function checkIncorrect(letter) {
+        if (pickedWordPlaceholderArr.indexOf(letter.toLowerCase()) === -1 && pickedWordPlaceholderArr.indexOf(letter.toUpperCase()) === -1) {
+            //Subtract a guess
+            guessesLeft--;
+            //Add to incorrect guesses list
+            incorrectLetterBank.push(letter);
+            //Push incorrect guesses and guesses left to DOM
+            $guessedLetters.textContent = incorrectLetterBank.join(" ");
+            $guessesLeft.textContent = guessesLeft;
+        }
+        checkLoss();
+    }
+
+    //Check loss
+    function checkLoss() {
+        if (guessesLeft === 0) {
+            losses++;
+            gameRunning = false;
+            $losses.textContent = losses;
+            $placeholders.textContent = pickedWord.toUpperCase();
+            
+            pauseAudio();
+            alert("You Lost! Click the New Game Button to Try Again.");
+        }
+        checkWin();
+    }
+
+    //Check win
+    function checkWin() {
+        if (pickedWord.toLowerCase() === pickedWordPlaceholderArr.join('').toLowerCase()) {
+            wins++;
+            gameRunning = false;
+            $wins.textContent = wins;
+            /*if (pickedWord === "logic") {
+                function playAudio() {
+                    logic.play();
+                }
+            } else if (pickedWord === "kanye west") {
+                function playAudio() {
+                    kanye.play();
+                }
+            } else if(pickedWord === "eminem") {
+                function playAudio() {
+                    eminem.play();
+                }
+            } else if (pickedWord === "drake") {
+                function playAudio() {
+                    drake.play();
+                }
+            } else if (pickedWord === "run the jewels") {
+                function playAudio() {
+                    rtj.play();
+                }
+            } else if (pickedWord === "hopsin") {
+                function playAudio() {
+                    hopsin.play();
+                }
+            } else if (pickedWord === "big sean") {
+                function playAudio() {
+                    bigsean.play();
+                }
+            } */
+
+
+
+            /*switch (rapper) {
+                case "logic":
+                    playAudio("logic");
+                    break;
+                case "drake":
+                    playAudio("drake");
+                    break;
+                case "big sean":
+                    playAudio("bigsean");
+                    break;
+                case "kanye west":
+                    playAudio("kanye");
+                    break;
+                case "hopsin":
+                    playAudio("hopsin");
+                    break;
+                case "eminem":
+                    playAudio("eminem");
+                    break;
+                case "run the jewels":
+                    playAudio("rtj");
+                    break;-
+            }
+            playAudio();*/
+
+            alert("Congradulations, You are a Winner! Click the New Game Button to Start a New Game.");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    //add event listener for new game button
+    $newGameButton.addEventListener('click', newGame);
+
+    //add onkey event that filters out all keys but letters and numbers
+    document.onkeyup = function (event) {
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            letterGuess(event.key);
+        }
+    }
+
 }
+
+
+
+
