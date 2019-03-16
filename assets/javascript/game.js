@@ -115,74 +115,9 @@ function newGame() {
             wins++;
             gameRunning = false;
             $wins.textContent = wins;
-            /*if (pickedWord === "logic") {
-                function playAudio() {
-                    logic.play();
-                }
-            } else if (pickedWord === "kanye west") {
-                function playAudio() {
-                    kanye.play();
-                }
-            } else if(pickedWord === "eminem") {
-                function playAudio() {
-                    eminem.play();
-                }
-            } else if (pickedWord === "drake") {
-                function playAudio() {
-                    drake.play();
-                }
-            } else if (pickedWord === "run the jewels") {
-                function playAudio() {
-                    rtj.play();
-                }
-            } else if (pickedWord === "hopsin") {
-                function playAudio() {
-                    hopsin.play();
-                }
-            } else if (pickedWord === "big sean") {
-                function playAudio() {
-                    bigsean.play();
-                }
-            } */
-
-
-
-            /*switch (rapper) {
-                case "logic":
-                    playAudio("logic");
-                    break;
-                case "drake":
-                    playAudio("drake");
-                    break;
-                case "big sean":
-                    playAudio("bigsean");
-                    break;
-                case "kanye west":
-                    playAudio("kanye");
-                    break;
-                case "hopsin":
-                    playAudio("hopsin");
-                    break;
-                case "eminem":
-                    playAudio("eminem");
-                    break;
-                case "run the jewels":
-                    playAudio("rtj");
-                    break;-
-            }
-            playAudio();*/
-
             alert("Congradulations, You are a Winner! Click the New Game Button to Start a New Game.");
         }
     }
-
-
-
-
-
-
-
-
 
 
     //add event listener for new game button
